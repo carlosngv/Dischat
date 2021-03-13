@@ -9,6 +9,7 @@ export class SocketService {
 
   messages: Message[] = []
   socket: any;
+  users: any[] = [];
 
   constructor() {
     this.setUpSocket();
@@ -16,7 +17,7 @@ export class SocketService {
   }
 
   setUpSocket() {
-    this.socket = io('http://localhost:3000/');
+    this.socket = io('hhttps://dischat-ng.herokuapp.com/');
   }
 
 
@@ -27,12 +28,28 @@ export class SocketService {
   }
 
   onReveiveMessage() {
+    this.socket.on('users-list', (e: any) => {
+      this.users.push(...e);
+      console.log('E', e);
+    });
+    this.socket.on('welcome-message', (e:any) => {
+        console.log(e);
+        this.messages.push(e);
+    });
     this.socket.on('message', (e: any)=>{
       if(e){
         console.log(e);
         this.messages.push(e); // Toma el mensaje formateado y lo mete al arreglo de mensajes
       }
-  });
+    });
+
+  }
+
+
+  joinChat() {
+    let user = localStorage.getItem('name');
+    if(!user) return
+    this.socket.emit('join-chat', {user});
   }
 
 

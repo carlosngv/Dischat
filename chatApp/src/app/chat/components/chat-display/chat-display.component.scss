@@ -22,7 +22,8 @@
 .user-list {
     margin-top: 20px;
     background-color: #57606f;
-    height: 83%
+    height: 83%;
+    overflow-y: auto;
 }
 
 .message {

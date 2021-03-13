@@ -23,7 +23,11 @@ class Server {
         this.app.use(express.static('public'));
     }
 
-    routes() {}
+    routes() {
+        app.get('*', (req, res) => {
+            res.sendFile(path.resolve(__dirname, 'public/index.html'));
+        });
+    }
 
     sockets() {
         this.io.on('connection', socketController);

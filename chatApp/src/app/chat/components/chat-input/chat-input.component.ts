@@ -15,7 +15,9 @@ export class ChatInputComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
+
 
   sendMessage(){
     this.message = this.messageInput.nativeElement.value;
