@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="title-container">
+        <span>Dischat</span>
+    </div>
+</div>
+<div class="display-container row">
+    <div class="col-sm-3">
+        <div class="user-list">
+            <app-user-list></app-user-list>
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <div class="messages-container">
+            <div class="message" *ngFor="let message of messages">
+                <p class="name__date">
+                    {{message.username}}
+                    {{message.createdAt}}
+                </p>
+                <p>
+                    {{message.message}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

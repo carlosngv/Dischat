@@ -1,14 +1,21 @@
 const express = require('express');
 const cors = require('cors');
+const { socketController } = require('../controllers/socket.controller');
+
 
 class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;
         this.server = require('http').createServer(this.app);
-        this.io = require('socket.io')(this.server);
+        this.io = require('socket.io')(this.server, {cors: {
+            origin: "http://localhost:4200",
+            methods: ["GET", "POST"]
+          }});
+
         this.middlewares();
         this.routes();
+        this.sockets();
     }
 
     middlewares() {
@@ -17,6 +24,10 @@ class Server {
     }
 
     routes() {}
+
+    sockets() {
+        this.io.on('connection', socketController);
+    }
 
     listen() {
         this.server.listen(this.port, () => {

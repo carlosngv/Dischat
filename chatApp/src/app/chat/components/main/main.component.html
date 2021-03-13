@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <app-chat-display [messages]="messages"></app-chat-display>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <app-chat-input (onSend)="sendMessage($event)"></app-chat-input>
+        </div>
+    </div>
+</div>
