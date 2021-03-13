@@ -17,7 +17,7 @@ export class SocketService {
   }
 
   setUpSocket() {
-    this.socket = io('hhttps://dischat-ng.herokuapp.com/');
+    this.socket = io('https://dischat-ng.herokuapp.com/');
   }
 
 
