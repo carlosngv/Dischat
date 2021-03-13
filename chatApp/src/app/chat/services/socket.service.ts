@@ -21,12 +21,17 @@ export class SocketService {
 
 
   sendMessage(message: string) {
-    this.socket.emit('new-message', message); // Toma el mensaje y lo formatea
+    let user = localStorage.getItem('name');
+    if(!user) return
+    this.socket.emit('new-message', {message, user}); // Toma el mensaje y lo formatea
   }
 
   onReveiveMessage() {
     this.socket.on('message', (e: any)=>{
-      this.messages.push(e); // Toma el mensaje formateado y lo mete al arreglo de mensajes
+      if(e){
+        console.log(e);
+        this.messages.push(e); // Toma el mensaje formateado y lo mete al arreglo de mensajes
+      }
   });
   }
 

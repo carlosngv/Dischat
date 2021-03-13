@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('inputRef') inputRef: ElementRef;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  getName() {
+    let name = this.inputRef.nativeElement.value;
+    if(name.length === 0) { this.router.navigate(['/'])}
+    localStorage.setItem('name', name);
+  }
+
+
 
 }

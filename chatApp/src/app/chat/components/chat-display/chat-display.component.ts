@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewChecked } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Message } from '../interfaces/message.interface';
 
 @Component({
@@ -6,12 +7,25 @@ import { Message } from '../interfaces/message.interface';
   templateUrl: './chat-display.component.html',
   styleUrls: ['./chat-display.component.scss']
 })
-export class ChatDisplayComponent implements OnInit {
+export class ChatDisplayComponent implements AfterViewChecked {
+
+
+  @ViewChildren("messagesContainer") messagesContainers: QueryList<ElementRef>;
+
   @Input() messages: Message[] = [];
 
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor() {
   }
+
+
+  ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
+  scrollToBottom() {
+    this.messagesContainers.first.nativeElement.scrollTop = this.messagesContainers.first.nativeElement.scrollHeight;
+  }
+
 
 }

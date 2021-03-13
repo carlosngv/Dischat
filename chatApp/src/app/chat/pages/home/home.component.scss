@@ -1,7 +1,32 @@
 .container {
-    border: 2px solid black;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+
+}
+
+.card {
+    box-shadow: 0px 0px 78px -4px;
+}
+
+.card-body {
+    padding: 50px
+}
+
+.btn {
+    margin-top: 10px;
+    width: 100%
+}
+
+.card-header {
+    padding: 30px;
+    .title {
+        font-weight: bold;
+        font-size: 30px;
+    }
+}
+
+.card-footer {
+    text-align: center;
 }

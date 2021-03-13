@@ -1,5 +1,4 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { SocketService } from '../../services/socket.service';
 
 @Component({
   selector: 'app-chat-input',

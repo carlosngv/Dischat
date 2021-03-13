@@ -7,8 +7,11 @@ const socketController = socket => {
     // Notifies all users that the current connected
     socket.broadcast.emit('welcome-message', 'User has joined the chat');
 
-    socket.on('new-message', msg => {
-        message = formatMessage('USER', msg);
+    socket.on('new-message', (msg) => {
+        let { user, message} = msg;
+        console.log(msg);
+        message = formatMessage(user, message);
+        console.log('MSG', message);
         socket.broadcast.emit('message', message);
 
 });

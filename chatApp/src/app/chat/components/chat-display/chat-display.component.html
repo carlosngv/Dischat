@@ -10,10 +10,10 @@
         </div>
     </div>
     <div class="col-sm-9">
-        <div class="messages-container">
+        <div class="messages-container" #messagesContainer>
             <div class="message" *ngFor="let message of messages">
                 <p class="name__date">
-                    {{message.username}}
+                    {{message.user}} -
                     {{message.createdAt}}
                 </p>
                 <p>
